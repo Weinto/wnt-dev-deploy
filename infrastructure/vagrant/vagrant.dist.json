@@ -1,0 +1,19 @@
+{
+    "node" : 1,
+    "system" : {
+        "box" : "debian/buster64",
+        "memory" : 2048,
+        "cpus" : 1,
+        "gui" : false,
+        "name" : "wnt-dev-deploy",
+        "hostname" : "wnt-dev-deploy"
+    },
+    "shared_folder" : {
+        "host": "default",
+        "guest": "default"
+    },
+    "network" : {
+        "private_ip" : "10.192.168.12",
+        "private_tld" : "wnt"
+    }
+}

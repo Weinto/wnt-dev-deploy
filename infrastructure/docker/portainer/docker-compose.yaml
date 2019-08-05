@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  # portainer
+  portainer:
+    image: portainer/portainer
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data portainer/portainer
+    networks:
+      - traefik_network
+    ports:
+      - 8000:8000
+      - 9000:9000
+    labels:
+      - "traefik.enabled=true"
+      - "traefik.port=9000"
+      - "traefik.docker.network=traefik_network"
+      - "traefik.backend=portainer"
+      - "traefik.frontend.rule=Host:portainer.wnt"
+
+volumes:
+  portainer_data:
+
+networks:
+  traefik_network:
+    external: true
